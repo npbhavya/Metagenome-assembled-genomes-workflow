@@ -6,9 +6,10 @@ This workflow takes a set of input shortgun sequenced metagenomes and build meta
 
 **SETTING UP SCRIPTS FIRST** 
 Run the following commands, that will find the job scripts saved with an extension .sh and replaces the emailaddress and adds the path
-        make sure to CHNAGE MY EMAIL ADDRESS TO YOURS HERE,
-        for f in */*.sh; do sed -i 's/YOUREMAILHERE/email@iu.edu/g' $f; done
-        for f in */*.sh; do p=`pwd`; sed -i "s|PWDHERE|$p|g" $f ; done 
+make sure to CHNAGE MY EMAIL ADDRESS TO YOURS HERE,
+	
+	for f in */*.sh; do sed -i 's/YOUREMAILHERE/email@iu.edu/g' $f; done
+	for f in */*.sh; do p=`pwd`; sed -i "s|PWDHERE|$p|g" $f ; done 
 
 **LETS START WITH THE READS** 
 Make sure all the reads do end with the extension "*.fastq" and NOT "*.fq".
