@@ -83,7 +83,7 @@ Do make note that using this result for estimating taxa/functional abundance can
 
 	mv assembly/contigs/dedupe.sh assembly/final_contigs.fa
 
-**BINNING AND BIN QUALITY REPORTS** \
+**BINNING AND BIN QUALITY REPORTS** 
 - Lets start grouping similar sequences together now. 
 Enter the binning directory.
 
