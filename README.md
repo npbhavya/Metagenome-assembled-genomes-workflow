@@ -4,14 +4,14 @@ This workflow takes a set of input shortgun sequenced metagenomes and build meta
 
 ## Steps to run the scripts
 
-**SETTING UP SCRIPTS FIRST** 
+**SETTING UP SCRIPTS FIRST** \
 Run the following commands, that will find the job scripts saved with an extension .sh and replaces the emailaddress and adds the path
 make sure to CHNAGE MY EMAIL ADDRESS TO YOURS HERE,
 	
 	for f in */*.sh; do sed -i 's/YOUREMAILHERE/email@iu.edu/g' $f; done
 	for f in */*.sh; do p=`pwd`; sed -i "s|PWDHERE|$p|g" $f ; done 
 
-**LETS START WITH THE READS** 
+**LETS START WITH THE READS** \
 Make sure all the reads do end with the extension "*.fastq" and NOT "*.fq".
 Add you reads as files to the reads directory. In the reads directory, run the command
 
@@ -21,7 +21,7 @@ Add you reads as files to the reads directory. In the reads directory, run the c
 
 This command joins all the left reads(ending with 1.fastq) toegther to left.fq and all the right reads (ending with 2.fastq). 
 
-**TAXA ANNOTATION** 
+**TAXA ANNOTATION** \
 Enter the taxa directory, run any one or all of the taxonomic identification tools to generate a taxonomic profile of the metagenomic samples. 
 
 	cd 2-taxa/
@@ -35,13 +35,13 @@ Output is saved to the files in a directory "focus_output/".
 	qsub centrifuge.sh 
 Output is saved to multiple files. 
 
-**FUNCTIONAL ANNOTATION**
+**FUNCTIONAL ANNOTATION** \
 Enter the function directory, run any of the scripts to generate a functional profile for the metagenome samples. 
 	
 	cd 2-functions
 *WORK IN PROGRESS!*
 
-**ASSEMBLY AND ASSEMBLY REPORTS** 
+**ASSEMBLY AND ASSEMBLY REPORTS** \
 - Go to to assembly directory to start assembling the reads. 
 The script co-assembles all the samples together, and individual assemblies for each sample. 
 	
@@ -83,7 +83,7 @@ Do make note that using this result for estimating taxa/functional abundance can
 
 	mv assembly/contigs/dedupe.sh assembly/final_contigs.fa
 
-**BINNING AND BIN QUALITY REPORTS** 
+**BINNING AND BIN QUALITY REPORTS** \
 - Lets start grouping similar sequences together now. 
 Enter the binning directory.
 
