@@ -1,10 +1,12 @@
 # Metagenomic analysis README
 ## Description:
-The scripts available here follow along the following steps, - coassembly or cross assembly of all the reads using 1)SPAdes 2)MEGAHIT - assembly statistics using 1 )QUAST 2) Bowtie2 - Binning similar contigs toegther to 
-reconstruct genomes, 1) MetaBat - Bin qulaity statistics using 1) CheckM, Kraken, Centrifuge, BUSCO - Taxa annotation after each steps using 1)Kraken, 2)Centrifuge, 3)FOCUS - Functional annotation for the bins using 1)SUPEFOCUS 
-These scripts will help you get started with the basic steps employed in metagenomic analysis, starting with taxa/functional annotation of the intial reads and assembled contigs. If you are insterested in further reconstructing 
-the genomes from the metagenomes, you can continue running the binning steps to tie the different function back to taxa. This is by no means the end of the ananlysis steps, these are the general steps, the next further steps will 
-vary base don your research questions.
+First the reads have to placed in the 1-reads directory. \
+Next if the user wishes to look at the taxanomic and functional profile of the reads, they can run the scripts in the directory 2-taxa and 2-functions. \
+Then to build MAGS, run the scripts in the 3-assembly directory to coassemble all the reads, as well as individual sample assemblies  using 1)SPAdes and 2)MEGAHIT. \
+The results are all deduplicated to remove all the exact duplicates using dedupe.sh script and assembly statistics for all assemblies using QUAST are generated into a table. \
+Binning similar contigs toegther to using METABAT and CONCOCT, which are then deduplicated to generate a more curated bins using Das tool. \
+Finally the generated bins from METABAT, CONCOCT and DAS tool are all run through checkM for bin qulaity statistics. \
+From here the downstream analysis is really dependent on the research questions.
 
 ## Steps to run the scripts
 
@@ -14,14 +16,34 @@ vary base don your research questions.
         for f in */*.sh; do sed -i 's/YOUREMAILHERE/email@iu.edu/g' $f; done
         for f in */*.sh; do p=`pwd`; sed -i "s|PWDHERE|$p|g" $f ; done 
 
-LETS START WITH THE READS** 
-Make sure all the reads do end with the extension "*.fastq" and not "*.fq".
+**LETS START WITH THE READS** 
+Make sure all the reads do end with the extension "*.fastq" and NOT "*.fq".
 2. Add you reads as files to the reads directory. In the reads directory, run the command
 
         cat *1.fastq >left.fq
         cat *2.fastq >right.fq 
 
 This command joins all the left reads(ending with 1.fastq) toegther to left.fq and all the right reads (ending with 2.fastq). 
+
+**TAXA ANNOTATION**
+	cd 2-taxa
+This is to generate a taxonomic profile of your input samples. 
+Run three different taxa annotation tools - FOCUS, Kraken2 and Centrifuge on the reads
+
+        qsub kraken.sh
+Output is saved to the file "kraken-report-final.csv"
+
+        qsub focus.sh
+Output is saved to the files in a directory "focus_output/".
+
+        qsub centrifuge.sh
+Output is saved to multiple files.
+
+**FUNCTIONAL ANNOTATION**
+	cd 2-functions 
+This is to generate the functional profile for your input sampes. 
+Run the 
+
 
 **ASSEMBLY AND ASSEMBLY REPORTS** 
 3. Go to to assembly directory to start assembling the reads. The script co-assembles all the samples together, and individual assemblies for each sample. 
