@@ -38,7 +38,7 @@ Output is saved to multiple files.
 Enter the function directory, run any of the scripts to generate a functional profile for the metagenome samples. 
 	
 	cd 2-functions
-WORK IN PROGRESS! 
+*WORK IN PROGRESS!*
 
 **ASSEMBLY AND ASSEMBLY REPORTS** 
 - Go to to assembly directory to start assembling the reads. 
@@ -100,6 +100,7 @@ OUTPUT- a set of files that end with the extension *.bam and *.bai.
 
 OUTPUT - MetaBat2 outputs the bins to metabat_bins and concoct outputs to concoct_bins. Both these directories should have a list of bins that was put from the two programs. 
 
+BELOW is *Work in progress*
 - Running dastool that takes the bins from metabat2 and concoct to remove non-redundant set of bins from both the binning algorithms. This will generate one set of outputs, 
 
 		qsub 3-dastool.sh
