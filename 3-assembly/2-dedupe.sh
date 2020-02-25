@@ -14,7 +14,7 @@ mkdir assembly/contigs
 
 #this part needs to be tested once 
 cd assembly
-for f in *_megahit_output
+for f in *megahit_output
 do
 	mv "$f"/final.contigs.fa contigs/"$f"_megahit.fa
 done
@@ -28,8 +28,9 @@ mv contigs/megahit_megahit.fa contigs/all_megahit.fa
 mv contigs/spades_spades.fa contigs/all_spades.fa
 
 #depuplicating all the assemblies - coassembled, individual assemblies, megahit and spades assemblies - all combined. Removes all the exact duplicates and gives us a final set of contigs to work with for binning 
-for f in contigs/*; do echo "$f" >>contigs-name.txt; done
-tr '\n' ',' < contigs-names.txt >contig-names.txt
+for f in contigs/*; do echo "$f" >>contigs-names.txt; done
+tr '\n' ',' < contigs-names.txt >contig-names.
+echo `cat contig-names.txt`
 rm -rf contigs-names.txt
 
 dedupe.sh in=`cat contig-names.txt` out=contigs/dedupe_contigs.fasta >contigs/dedupe.log 2>&1
