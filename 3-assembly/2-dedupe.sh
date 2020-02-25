@@ -3,7 +3,7 @@
 #PBS -l nodes=1:ppn=10,vmem=100gb,walltime=30:00
 #PBS -M YOUREMAILHERE
 #PBS -m abe
-#PBS -N spades
+#PBS -N dedupe
 
 cd PWDHERE
 
