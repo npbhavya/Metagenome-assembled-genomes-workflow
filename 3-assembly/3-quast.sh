@@ -3,7 +3,7 @@
 #PBS -l nodes=1:ppn=10,vmem=100gb,walltime=6:00:00
 #PBS -M YOUREMAILHERE
 #PBS -m abe
-#PBS -N megahit
+#PBS -N quast
 
 cd PWDHERE
 
