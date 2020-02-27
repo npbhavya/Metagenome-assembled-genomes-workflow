@@ -10,8 +10,8 @@ cd PWDHERE
 module load spades/intel/3.11.1
 
 #Co-assembling
-left=reads/left.fq
-right=reads/right.fq
+left=1-reads/left.fq
+right=1-reads/right.fq
 spades.py -1 $left  -2 $right --meta -t 8 -o assembly/spades_output
 
 #Running individual assemblies
