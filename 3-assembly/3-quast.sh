@@ -28,5 +28,5 @@ module unload quast
 module unload python
 module load python/3.6.8
 
-python assembly/quast_table.py -d assembly/contigs_quast -o assembly/quast_output.tsv
+python quast_table.py -d contigs_quast -o quast_output.tsv
 
