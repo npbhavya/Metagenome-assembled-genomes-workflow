@@ -124,6 +124,3 @@ OUTPUT is saved to functions/prokka_output
 
 	qsub fragenescan.sh
 OUTPUT is saved to functiona/fraggenescan_output
-
-## Contact 
-Email npbhavya13@gmail.com
