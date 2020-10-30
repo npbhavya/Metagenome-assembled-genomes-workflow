@@ -3,10 +3,10 @@
 This workflow takes a set of input shortgun sequenced metagenomes and build metagenome assembled genomes (MAGs) using currently available programs. The workflow includes job scripts that can be submitted to a PBS/TORQUE job scheduler, but can be transferable to other clusters. 
 Follow the README to run this workflow. 
 
-#### Snakemake workflow
+### Snakemake workflow
 A simpler version of the workflow that includes megahit assembler and metabat2 binning tool to reconstruct MAGs is written into a snakemake workflow. To run this workflow, follow the README in snakemake-workflow
 
-#### Visualization of metagenomes
+### Visualization of metagenomes
 For visualization of metagenomes, taxa and functional annotation, there are availabl R scripts here https://github.com/hleffler/Microbial-visualization
 
 ## Steps to run the scripts
