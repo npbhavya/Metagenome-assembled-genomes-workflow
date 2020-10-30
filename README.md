@@ -126,4 +126,4 @@ OUTPUT is saved to functions/prokka_output
 OUTPUT is saved to functiona/fraggenescan_output
 
 ## Contact 
-Email bhnala@iu.edu
+Email npbhavya13@gmail.com
