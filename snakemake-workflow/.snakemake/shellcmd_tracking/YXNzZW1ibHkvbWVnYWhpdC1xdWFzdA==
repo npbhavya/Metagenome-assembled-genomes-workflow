@@ -1,0 +1,1 @@
+quast.py assembly/megahit-assembly/final.contigs.fa -o assembly/megahit-quast

@@ -1,0 +1,1 @@
+bowtie2 -x binning/megahit-bowtie2-index -1 reads/SRR9649759_sub_R1.fastq -2 reads/SRR9649759_sub_R2.fastq -S binning/SRR9649759_sub.sam

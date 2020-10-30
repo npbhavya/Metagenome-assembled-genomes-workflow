@@ -1,0 +1,1 @@
+samtools view -bS binning/SRR9649759_sub.sam | samtools sort -o binning/SRR9649759_sub.bam
