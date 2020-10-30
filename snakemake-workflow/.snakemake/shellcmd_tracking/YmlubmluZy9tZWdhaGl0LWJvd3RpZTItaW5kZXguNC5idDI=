@@ -1,1 +1,0 @@
-bowtie2-build assembly/megahit-assembly/final.contigs.fa binning/megahit-bowtie2-index

@@ -1,1 +1,0 @@
-rmdir assembly/megahit-assembly; megahit -1 reads/left.fastq -2 reads/right.fastq -o assembly/megahit-assembly
