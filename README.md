@@ -3,6 +3,8 @@
 This workflow takes a set of input shortgun sequenced metagenomes and build metagenome assembled genomes (MAGs) using currently available programs. The workflow includes job scripts that can be submitted to a PBS/TORQUE job scheduler, but can be transferable to other clusters. 
 Follow the README to run this workflow. 
 
+A simpler version of the workflow that includes megahit assembler and metabat2 binning tool to reconstruct MAGs is written into a snakemake workflow. To run this workflow, follow the README in snakemake-workflow
+
 ## Steps to run the scripts
 
 **SETTING UP SCRIPTS FIRST** \
