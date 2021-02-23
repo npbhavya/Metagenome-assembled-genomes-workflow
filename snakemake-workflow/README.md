@@ -21,15 +21,15 @@ Download snakelike to the environment
 
 #assembly and assembly stats
 
-`conda install -c bioconda megahit`
-`conda install -c bioconda quast`
+`conda install -c bioconda megahit
+conda install -c bioconda quast`
 
 #binning and binning stats
 
-`conda install -c bioconda bowtie2`
-`conda install -c bioconda samtools==1.9`
-`conda install -c ursky metabat2`
-`conda install -c bioconda checkm-genome`
+`conda install -c bioconda bowtie2
+conda install -c bioconda samtools==1.9
+conda install -c ursky metabat2
+conda install -c bioconda checkm-genome`
  
 ### Runing the workflow
 
