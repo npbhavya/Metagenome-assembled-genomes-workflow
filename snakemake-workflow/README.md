@@ -40,6 +40,7 @@ Download snakelike to the environment
 Add paired end Illumina reads to directory "reads" 
 - For now the snakefile runs only for Illumina paired end reads 
 - the input files must end with {sample}_R1.fastq, and {sample}_R2.fastq
+- Change this to {sample}_R1_001.fastq, based on the extensions.
 
 Run the command 
 
