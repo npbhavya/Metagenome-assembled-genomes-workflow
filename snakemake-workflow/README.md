@@ -50,7 +50,13 @@ First check if there are any errors, dry-run
 
 If there are no erros, then run the file 
 
-`snakemake -s snakemake-cross-assembly -p`
+`snakemake -s snakemake-cross-assembly-bacterial -p`
+
+### Other snakemakefiles 
+- snakemake-cross-assembly-bacterial: runs cross assembly, build MAGs and assess bacterial compleness 
+- snakemake-cross-assembly: runs cross assembly and build MAGs 
+- snakeme-phage-bins: assesses the bins for phage/viruses using viral_verify (https://pypi.org/project/viral-verify/) and for the viral identified contigs, phage completeness is calculated using checkv (https://bitbucket.org/berkeleylab/checkv)
+
 
 ### Addtional paramters that can be added 
 - threads 
