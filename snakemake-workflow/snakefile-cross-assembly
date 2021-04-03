@@ -148,16 +148,3 @@ rule metabat_contigs_depth:
 		shell("jgi_summarize_bam_contig_depths --outputDepth {output} {input.bam}"),
 		shell("mkdir binning/metabat_bins"),
 		shell("metabat2 -i {input.contigs} -a {output.depth} -m 1500 -o {params.basename}")
-
-bins, =glob_wildcards("binning/metabat_bins/metabat_bins/{bins}.fa")
-
-rule viral_verify:
-	input:
-		input="binning/metabat_bins/metabat_bins/{bins}.fa"
-	params:
-		basename="binning/metabat_bins/{bins}_viral_verify"
-	output:
-		out="binning/metabat_bins/{bins}_viral_verify/{bins}-results.csv"
-	run:
-		shell("viral_verify -i {input.input} -o {params.basename} -H /home1/bhavya/Pfam-A.hmm -t 10 --prefix {bins}")
-
