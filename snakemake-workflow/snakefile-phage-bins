@@ -37,16 +37,36 @@ rule viral_verify:
 	output:
 		directory("binning/{bin}_viral_verify")
 	shell:
-		"viral_verify -i {input.input} -o {output} -H /home1/bhavya/Pfam-A.hmm -t 10"
-
+		"""
+		set +e
+		viral_verify -i {input.input} -o {output} -H ~/Pfam-A.hmm -t 10
+		exitcode=$?
+		if [ $exitcode != 25 ]
+		then
+			mkdir {output}
+			touch {output}/{bin}-results.csv
+			exit 0
+		fi
+		"""
 
 rule get_viral_seq:
 	input:
-		"binning/{bin}_viral_verify/{bin}-results.csv"
+		i="binning/{bin}_viral_verify"
+	params:
+		bi="{bin}-results.csv"
 	output:
 		"binning/{bin}-viralseq.txt"
-	run:
-		shell("grep -w 'Virus,' {input} | cut -d ',' -f 1 >{output}")
+	shell:
+		"""
+		set +e
+		grep -w 'Virus,' {input.i}/{params.bi} | cut -d ',' -f 1 >{output}
+		exitcode=$?
+		if [ $exitcode != 0 ]
+		then
+			touch  {output}
+			exit 0
+		fi
+		"""
 
 rule samtools_faidx:
 	input:
@@ -54,8 +74,16 @@ rule samtools_faidx:
 		metabat_bins="binning/metabat_bins/{bin}.fa"
 	output:
 		"binning/{bin}-viralseq.fasta"
-	run:
-		shell("for f in `cat binning/metabat_bins.1-viralseq.txt`; do  samtools faidx {input.metabat_bins} $f ; done >> {output}")
+	shell:
+		"""
+		set +e
+		for f in `cat {input.contigs}`; do samtools faidx {input.metabat_bins} $f >> {output}; done
+		if [[ ! -f {output} ]]
+		then
+			touch {output}
+			exit 0
+		fi
+		"""
 
 rule checkv:
 	input:
@@ -64,17 +92,36 @@ rule checkv:
 		"binning/{bin}-viralComplete"
 	output:
 		"binning/{bin}-viralComplete/completeness.tsv"
-	run:
-		shell("export CHECKVDB=~/checkv-db-v1.0"),
-		shell("checkv end_to_end {input} {params} -t 10"),
+	shell:
+		"""
+		set +e
+		export CHECKVDB=~/checkv-db-v1.0
+		checkv completeness {input} {params} -t 10
+		exitcode=$?
+		if [[ ! -d {output} ]]
+		then
+			mkdir {params}
+			touch {output}
+			exit 0
+		fi
+		"""
 
 rule checkv_output:
 	input:
 		"binning/{bin}-viralComplete/completeness.tsv"
 	output:
 		"binning/{bin}-viralComplete/completeness2.tsv"
-	run:
-		shell("sed 's|.*|{input},&|g' {input} > {output}")
+	shell:
+		"""
+		set +e
+		sed 's|.*|{input},&|g' {input} > {output}
+		exitcode=$?
+		if [ $exitcode == 25 ]
+		then
+			touch {output}
+			exit 0
+		fi
+		"""
 
 rule final_results:
 	input:
