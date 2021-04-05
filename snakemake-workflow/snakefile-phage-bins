@@ -36,6 +36,8 @@ rule viral_verify:
 		input="binning/metabat_bins/{bin}.fa"
 	output:
 		directory("binning/{bin}_viral_verify")
+	params:
+		"binning/{bin}_viral_verify/{bin}-results.csv"
 	shell:
 		"""
 		set +e
@@ -44,7 +46,7 @@ rule viral_verify:
 		if [ $exitcode != 25 ]
 		then
 			mkdir {output}
-			touch {output}/{bin}-results.csv
+			touch {params}
 			exit 0
 		fi
 		"""
