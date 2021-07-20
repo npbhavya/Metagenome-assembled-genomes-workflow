@@ -17,7 +17,7 @@ Activate the conda environment
 
 Download snakelike to the environment
 
-`conda install snakemake`
+`conda install -c bioconda snakemake`
 
 #assembly and assembly stats
 
