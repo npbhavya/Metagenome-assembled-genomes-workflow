@@ -61,7 +61,9 @@ If there are no erros, then run the file
 - snakeme-phage-bins: assesses the bins for phage/viruses using viral_verify (https://pypi.org/project/viral-verify/) and for the viral identified contigs, phage completeness is calculated using checkv (https://bitbucket.org/berkeleylab/checkv)
 
 ### Output files 
+
 **snakefile-cross-assembly-bacterial**
+
 Assembled contigs saved to "assembly/megahit-assembly/final.contigs.fa"
 Assembled contigs stats saved to "assembly/megahit-quast/report.txt"
 Metabat binning output saved to "binning/metabat_bins"
