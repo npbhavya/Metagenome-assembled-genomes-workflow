@@ -64,11 +64,11 @@ If there are no erros, then run the file
 
 **snakefile-cross-assembly-bacterial**
 
-Assembled contigs saved to "assembly/megahit-assembly/final.contigs.fa"
-Assembled contigs stats saved to "assembly/megahit-quast/report.txt"
-Metabat binning output saved to "binning/metabat_bins"
-CheckM results saved to "binning/checkm_summary"
-Bin contributions saved to "contrib/bowtie2_alignment_rate.tsv" (this inlcudes overall alignment rate, sample name and bin name)
+- Assembled contigs saved to "assembly/megahit-assembly/final.contigs.fa"
+- Assembled contigs stats saved to "assembly/megahit-quast/report.txt"
+- Metabat binning output saved to "binning/metabat_bins"
+- CheckM results saved to "binning/checkm_summary"
+- Bin contributions saved to "contrib/bowtie2_alignment_rate.tsv" (this inlcudes overall alignment rate, sample name and bin name)
 
 
 ### Addtional paramters that can be added 
