@@ -39,23 +39,34 @@ Download snakelike to the environment
 
 Add paired end Illumina reads to directory "reads" 
 - For now the snakefile runs only for Illumina paired end reads 
-- the input files must end with {sample}_R1.fastq, and {sample}_R2.fastq
-- Change this to {sample}_R1_001.fastq, based on the extensions.
+- the input files must end with {sample}_good_out_R1.fastq, and {sample}_good_out_R2.fastq
+- Change this to {sample}_good_out_R1.fastq, based on the extensions.
 
+### QC 
+Didnt include the snakemake rule for QC
+
+### Running the snakefile
 Run the command 
 
 First check if there are any errors, dry-run
 
-`snakemake -s snakemake-cross-assembly -n` 
+`snakemake -s snakefile-cross-assembly-bacterial  -n` 
 
 If there are no erros, then run the file 
 
 `snakemake -s snakemake-cross-assembly-bacterial -p`
 
 ### Other snakemakefiles 
-- snakemake-cross-assembly-bacterial: runs cross assembly, build MAGs and assess bacterial compleness 
-- snakemake-cross-assembly: runs cross assembly and build MAGs 
+- snakefile-cross-assembly-bacterial: run cross assembly, builds MAGs, assesses quality of MAGs and bin contribution 
 - snakeme-phage-bins: assesses the bins for phage/viruses using viral_verify (https://pypi.org/project/viral-verify/) and for the viral identified contigs, phage completeness is calculated using checkv (https://bitbucket.org/berkeleylab/checkv)
+
+### Output files 
+**snakefile-cross-assembly-bacterial**
+Assembled contigs saved to "assembly/megahit-assembly/final.contigs.fa"
+Assembled contigs stats saved to "assembly/megahit-quast/report.txt"
+Metabat binning output saved to "binning/metabat_bins"
+CheckM results saved to "binning/checkm_summary"
+Bin contributions saved to "contrib/bowtie2_alignment_rate.tsv" (this inlcudes overall alignment rate, sample name and bin name)
 
 
 ### Addtional paramters that can be added 
