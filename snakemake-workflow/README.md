@@ -57,7 +57,8 @@ If there are no erros, then run the file
 `snakemake -s snakemake-cross-assembly-bacterial -p`
 
 ### Other snakemakefiles 
-- snakefile-cross-assembly-bacterial: run cross assembly, builds MAGs, assesses quality of MAGs and bin contribution 
+- snakefile-cross-assembly-bacterial: run cross assembly, builds MAGs, assesses quality of MAGs and bin contribution
+- snakefile-cross-assembly-phages: run the same steps as bacterial workflow, but runs two binning tools (metabat2 and concoct), and skips checkm instead runs checkv
 - snakeme-phage-bins: assesses the bins for phage/viruses using viral_verify (https://pypi.org/project/viral-verify/) and for the viral identified contigs, phage completeness is calculated using checkv (https://bitbucket.org/berkeleylab/checkv)
 
 ### Output files 
