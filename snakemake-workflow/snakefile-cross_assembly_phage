@@ -46,7 +46,8 @@ rule all:
 		"contrib/metabat_mapping_done",
 		"contrib/concoct_mapping_done",
 		"contrib/bowtie2_alignment_rate.txt",
-		"checkv/metabat_bins.1.fa_checkv/completeness.tsv"
+		"checkv/metabat_bins.1.fa_checkv/completeness.tsv",
+		"checkv/1.fa_checkv/completeness.tsv"
 
 rule concatenate:
 	input:
@@ -278,7 +279,26 @@ rule checkv_metabat:
 		mkdir checkv
 		set +e 
 		export CHECKVDB=~/checkv-db-v1.0
-		for f in `cat {input.metabat}`; do checkv completeness binning/metabat_bins/$f checkv/$f_checkv -t {threads}; done
+		for f in `cat {input.metabat}`; do checkv completeness binning/metabat_bins/$f checkv/$f -t {threads}; done
+		exitcode=$?
+		if [[ ! -d {output} ]]
+		then
+			touch {output}
+			exit 0
+		fi
+		"""
+
+rule checkv_concoct:
+	input:
+		"contrib/concoct_bin_names.txt",
+	output:
+		"checkv/1.fa_checkv/completeness.tsv"
+	threads: 10 
+	shell:
+		"""
+		set +e 
+		export CHECKVDB=~/checkv-db-v1.0
+		for f in `cat {input}`; do checkv completeness binning/concoct_bins/$f checkv/$f -t {threads}; done
 		exitcode=$?
 		if [[ ! -d {output} ]]
 		then
