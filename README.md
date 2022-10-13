@@ -1,4 +1,29 @@
 # Metagenome assembled genome workflows 
 
-This repository includes the worklfow as both scripts that can be submitted as scripts and as snakemake workflows. 
-Both the directories have README
+## Slurm scripts to run basic QC and annotation
+
+### Setting up a conda environement 
+
+    conda create -n metagenome
+    conda activate metagenome
+    conda install -c conda-forge mamba
+
+### Setting up packages in conda environment 
+
+
+    mamba install -c bioconda prinseq-plus-plus==1.2.3
+    mamba install -c bioconda kraken2 
+    mamba install -c bioconda super-focus 
+
+### Setting up the input data
+** For now this workflow runs only on illumina paired end **
+
+    #create a directory - reads 
+    mkdir raw-fastq
+    #drop forward and reverse reads here
+
+    #If the reads are already on the cluster elsewherre, just symlink the data
+    ln -s /home/nala/test-data raw-fastq
+
+    #save the sample names to a file
+    ls raw-fastq/ | grep "R1_001.fastq.gz" | sed -e 's/_R1_001.fastq.gz//g'  > sample-names.txt
