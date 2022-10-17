@@ -10,9 +10,9 @@
 
 for f in `cat ../sample-names.txt`; do 
 	kraken2 --db /home/user/database/kraken2db \
-		--paired ../raw-fastq/"$f"_R1_001.fastq raw-fastq/"$f"_R2_001.fastq \
+		--paired ../QC/"$f"_prinseq_good_out_R1.fastq ../QC/"$f"_prinseq_good_out_R2.fastq \
 		--threads 16 --report-zero-counts --use-names \
-		--report taxa/"$f"_kraken_report --output "$f"_kraken.out
+		--report "$f"_kraken_report --output "$f"_kraken.out
 done
 
 #moving the report to a new directory to generate one output 
