@@ -8,9 +8,8 @@
 #SBATCH --cpus-per-task=1
 #SBATCH --mem=200G
 
-export KRAKEN_DB=/home/user/database/kraken2db
 for f in `cat ../sample-names.txt`; do 
-	kraken2 --db $KRAKEN_DB \
+	kraken2 --db /home/user/database/kraken2db \
 		--paired ../raw-fastq/"$f"_R1_001.fastq raw-fastq/"$f"_R2_001.fastq \
 		--threads 16 --report-zero-counts --use-names \
 		--report taxa/"$f"_kraken_report --output "$f"_kraken.out
