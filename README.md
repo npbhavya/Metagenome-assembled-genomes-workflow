@@ -19,11 +19,12 @@
 ** For now this workflow runs only on illumina paired end **
 
     #create a directory - reads 
-    mkdir raw-fastq
+    mkdir paired
     #drop forward and reverse reads here
+
 
     #If the reads are already on the cluster elsewherre, just symlink the data
     ln -s /home/nala/test-data raw-fastq
 
     #save the sample names to a file
-    ls raw-fastq/ | grep "R1_001.fastq.gz" | sed -e 's/_R1_001.fastq.gz//g'  > sample-names.txt
+    ls paired/ | grep "R1.fastq.gz" | sed -e 's/_R1.fastq.gz//g'  > sample-names.txt
